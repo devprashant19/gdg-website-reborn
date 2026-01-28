@@ -3,6 +3,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Carousel from "../components/Carousel";
 import SciFiCard from "../components/SciFiCard";
+import { NeuralBackground } from "../components/NeuralBackground";
 import Link from "next/link";
 import YearSelector from "./YearSelector";
 import { events as eventsData } from "../data/events-data";
@@ -43,7 +44,11 @@ export default function EventsPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-[#0a0a0a] text-white">
+      <main className="relative min-h-screen bg-[#0a0a0a] text-white">
+
+        <NeuralBackground />
+
+        <div className="relative z-10">
 
         {/* --- GOOGLE THEMED HEADER --- */}
         <div className="relative w-full pt-24 pb-12 flex flex-col items-center justify-center z-10">
@@ -172,13 +177,12 @@ export default function EventsPage() {
             </div>
           </div>
         </div>
-      <div className="min-h-screen flex flex-col items-center justify-center p-10">
-        <h2 className="text-4xl text-white font-bold mb-10">Event Highlights</h2>
-        
-        {/* The Carousel */}
-        <Carousel images={photos} />
-        
-    </div>
+
+        <div className="min-h-screen flex flex-col items-center justify-center p-10">
+          <h2 className="text-4xl text-white font-bold mb-10">Event Highlights</h2>
+          <Carousel images={photos} />
+        </div>
+        </div>
       </main>
     </>
   );
