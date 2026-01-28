@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Carousel from "../components/Carousel";

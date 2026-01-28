@@ -2,12 +2,21 @@ import { events } from "../../data/events-data";
 import { notFound } from "next/navigation";
 import React from "react";
 
+// 1. Update the type: params is a Promise now
 interface EventDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export default function EventDetailPage({ params }: EventDetailPageProps) {
-  const event = events.find((e) => e.id === params.id);
+// 2. Make the component 'async'
+export default async function EventDetailPage({ params }: EventDetailPageProps) {
+  // 3. Await the params object to extract the ID
+  const { id } = await params;
+
+  // 4. Use the ID synchronously in .find()
+  // Note: Ensure e.id and id are the same type. 
+  // If e.id is a number in your data, use: parseInt(id)
+  const event = events.find((e) => e.id === id);
+
   if (!event) return notFound();
 
   return (
