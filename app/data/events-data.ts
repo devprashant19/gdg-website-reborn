@@ -1,8 +1,9 @@
 import type { EventData } from "../types/events";
 
-export const events: EventData[] = [
+export const events: (EventData & { id?: string })[] = [
   // 2026 Events
   {
+    id: "ai-ml-2026",
     year: "2026",
     title: "AI & Machine Learning Conference 2026",
     description: "Exploring the future of artificial intelligence",
@@ -13,6 +14,7 @@ export const events: EventData[] = [
       "Dive deep into the latest AI advancements, from GPT models to computer vision. Network with AI researchers and practitioners. Hands-on workshops on neural networks and deep learning frameworks.",
   },
   {
+    id: "web3-summit-2026",
     year: "2026",
     title: "Web3 Developer Summit",
     description: "Building the decentralized web",
@@ -23,6 +25,7 @@ export const events: EventData[] = [
       "Learn about blockchain development, smart contracts, and DeFi. Connect with Web3 pioneers and discover opportunities in the decentralized ecosystem. Workshops on Solidity, Rust, and dApp development.",
   },
   {
+    id: "devops-cloud-2026",
     year: "2026",
     title: "DevOps & Cloud Native Conference",
     description: "Modern infrastructure and deployment strategies",
@@ -35,6 +38,7 @@ export const events: EventData[] = [
 
   // 2025 Events
   {
+    id: "mobile-dev-2025",
     year: "2025",
     title: "Mobile Dev Summit 2025",
     description: "Cross-platform mobile development",
@@ -45,6 +49,7 @@ export const events: EventData[] = [
       "Explore Flutter, React Native, and Swift. Build amazing mobile experiences with the latest tools and frameworks. Sessions on app optimization, monetization, and user retention strategies.",
   },
   {
+    id: "cybersecurity-2025",
     year: "2025",
     title: "Cybersecurity Tech Talk",
     description: "Protecting the digital world",
@@ -55,6 +60,7 @@ export const events: EventData[] = [
       "Learn about threat detection, penetration testing, and security architecture. Industry experts share insights on zero-trust security and compliance. Hands-on labs for ethical hacking.",
   },
   {
+    id: "data-science-2025",
     year: "2025",
     title: "Data Science Workshop",
     description: "Analytics and insights for decision making",
@@ -67,6 +73,7 @@ export const events: EventData[] = [
 
   // 2024 Events
   {
+    id: "tech-innovation-2024",
     year: "2024",
     title: "Tech Innovation Summit",
     description: "Annual gathering of tech leaders and innovators",

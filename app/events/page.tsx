@@ -3,8 +3,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Carousel from "../components/Carousel";
-// --- IMPORTS ---
 import SciFiCard from "../components/SciFiCard";
+import Link from "next/link";
 import YearSelector from "./YearSelector";
 import { events as eventsData } from "../data/events-data";
 
@@ -145,18 +145,21 @@ export default function EventsPage() {
                   {filteredEvents.length > 0 ? (
                     filteredEvents.map((event, index) => (
                       <motion.div
-                        key={event.title}
+                        key={event.id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         className="w-full max-w-[90%] mx-auto"
                       >
-                        <SciFiCard
-                          title={event.title}
-                          bgImageSrc={event.image}
-                          themeColor={getThemeColor(index)}
-                          onClick={() => console.log("Clicked", event.title)}
-                        />
+                        <Link href={`/events/${event.id}`} passHref legacyBehavior>
+                          <a tabIndex={0} aria-label={`View details for ${event.title}`}> 
+                            <SciFiCard
+                              title={event.title}
+                              bgImageSrc={event.image}
+                              themeColor={getThemeColor(index)}
+                            />
+                          </a>
+                        </Link>
                       </motion.div>
                     ))
                   ) : (
