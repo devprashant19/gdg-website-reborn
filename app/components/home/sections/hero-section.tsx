@@ -1,0 +1,184 @@
+"use client";
+import { cn } from "@/app/lib/utils";
+import { ArrowRight } from "lucide-react";
+import { BorderBeam } from "@/app/components/ui/border-beam";
+import Image from "next/image";
+import { OrbitingGraphic } from "@/app/components/ui/floating-orbitals";
+import { BackgroundDecorativeCircles } from "@/app/components/ui/backgroundss";
+
+interface BaseHeroSectionProps {
+    title?: string | React.ReactNode;
+    description?: string;
+    className?: string;
+    titleClassName?: string;
+    descriptionClassName?: string;
+    children?: React.ReactNode;
+    style?: React.CSSProperties;
+    animationContent?: React.ReactNode;
+}
+
+const googleColors = ["#4285F4", "#EA4335", "#FBBC05", "#4285F4", "#34A853", "#EA4335"];
+
+function AnimatedTitle() {
+    const text = "Google Developer Groups - NITH Chapter";
+    const words = text.split(" ");
+    let charIndex = 0;
+
+    return (
+        <span className="inline-flex flex-wrap">
+            {words.map((word, wordIdx) => (
+                <span key={wordIdx} className="inline-flex mr-4">
+                    {word.split("").map((char, idx) => {
+                        const currentCharIndex = charIndex++;
+                        const color = googleColors[currentCharIndex % googleColors.length];
+                        return (
+                            <span
+                                key={idx}
+                                className="inline-block opacity-0 animate-reveal-letter text-black dark:text-white"
+                                style={{
+                                    animationDelay: `${currentCharIndex * 0.08}s`,
+                                    ["--google-color" as string]: color,
+                                    animationFillMode: "forwards",
+                                }}
+                            >
+                                {char}
+                            </span>
+                        );
+                    })}
+                </span>
+            ))}
+        </span>
+    );
+}
+
+function BaseHeroSection(props: BaseHeroSectionProps) {
+    return <section
+        id="hero"
+        className={cn("w-full max-w-[1600px] mx-auto relative flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 gap-12 min-h-[100vh] py-16 bg-white dark:bg-[#0a0a0f] overflow-hidden")}
+        style={props.style}
+    >
+    
+        {/* Background Decorative Circles */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Floating Orbitals */}
+            <div className="absolute top-16 left-1/4">
+                <OrbitingGraphic />
+            </div>
+            <BackgroundDecorativeCircles />
+
+        </div>
+    
+
+        {/* Left Section - Text Content */}
+        <div className="flex flex-col items-start justify-center flex-1 text-left p-8 relative">
+            <h1 className={cn("mb-8 text-4xl md:text-6xl lg:text-7xl xl:text-7xl font-bold leading-none", props.titleClassName)}>
+                <AnimatedTitle />
+            </h1>
+            <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-relaxed", props.descriptionClassName)}>
+            {props.description}    
+            </p>
+            {/* <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-relaxed", props.descriptionClassName)}>
+                <Cover>
+                    Empowering Developers, Elevating Innovation at GDG NITH Chapter.
+                </Cover>
+            </p> */}
+            <div
+                className="mt-12 flex flex-wrap gap-y-6 gap-x-8"
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-bottom"
+            >
+                <button className="relative px-8 py-4 text-base font-semibold rounded-full bg-[#4285F4] dark:bg-white text-white dark:text-black hover:bg-[#3367D6] dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 group overflow-hidden" onClick ={()=> window.location.href = "#events"}>
+                    Our Events
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                    <BorderBeam 
+                        size={100}
+                        duration={8}
+                        borderWidth={2}
+                        colorFrom="#EA4335"
+                        colorTo="#FBBC05"
+                        delay={0}
+                    />
+                </button>
+                {props.children}
+            </div>
+        </div>
+
+        {/* Right Section - SVG */}
+        <div            
+            className="flex-shrink-0 flex items-center justify-center w-full max-w-sm md:max-w-xl lg:max-w-lg relative z-10"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+        >
+            <Image
+                src="/assets/hero-img.svg"
+                alt="GDG NITH"
+                className="w-full h-auto animate-hero-entrance"
+                width={600}
+                height={600}
+                priority={true}
+            />
+        </div>
+
+        <style>
+            {`
+            @keyframes reveal-letter {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px) scale(0.8);
+                    color: var(--google-color);
+                }
+                40% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1.1);
+                    color: var(--google-color);
+                }
+                70% {
+                    transform: scale(1);
+                    color: var(--google-color);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+            .animate-reveal-letter {
+                animation: reveal-letter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            @keyframes hero-entrance {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.9);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+            @keyframes hero-float {
+                0%, 100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                25% {
+                    transform: translateY(-6px) rotate(1deg);
+                }
+                50% {
+                    transform: translateY(-10px) rotate(0deg);
+                }
+                75% {
+                    transform: translateY(-6px) rotate(-1deg);
+                }
+            }
+            .animate-hero-entrance {
+                opacity: 0;
+                animation: 
+                    hero-entrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards,
+                    hero-float 10s ease-in-out 1.5s infinite;
+            }
+        `}
+        </style>
+    </section>
+}
+
+BaseHeroSection.displayName = "BaseHeroSection";
+export { BaseHeroSection };
+
