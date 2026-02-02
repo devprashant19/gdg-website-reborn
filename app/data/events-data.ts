@@ -3,6 +3,16 @@ import type { EventData } from "../types/events";
 export const events: (EventData & { id?: string })[] = [
   // 2026 Events
   {
+    id: "Abyss",
+    year: "2026",
+    title: "Abyss",
+    description: "Dive into the depths of technology",
+    date: "February 15, 2026",
+    image: "/abyss.png",
+    details:
+      "Welcome to the Abyss event. Explore the unknown depths of technology and innovation.",
+  },
+  {
     id: "ai-ml-2026",
     year: "2026",
     title: "AI & Machine Learning Conference 2026",
