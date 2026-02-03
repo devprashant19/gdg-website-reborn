@@ -23,10 +23,10 @@ export const ApplicationInfo = ({ className }: { className?: string }) => {
       {/* 2. Stacked Text on the Right */}
       <div className="flex flex-col items-start justify-center">
         <h1 className="text-2xl font-bold tracking-tight text-foreground leading-none mb-1">
-          GDG NITH
+          NITH-CHAPTER
         </h1>
         <p className="text-sm font-medium text-muted-foreground/80 tracking-wider">
-          GOOGLE DEVELOPER GROUPS
+          GDG-LUDHIANA
         </p>
       </div>
     </div>

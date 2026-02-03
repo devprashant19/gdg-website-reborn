@@ -429,12 +429,13 @@ export default function AbyssEventPage() {
             display: none !important;
         }
         #social-links a{
-          color: var(--white);
+          color: #f6f6f6 !important;
         }
+        
         #gdg-logo{
-          background-color: transparent;
-          border-color: transparent;
-          color: var(--white);
+          background-color: transparent  !important;
+          border-color: transparent !important;
+          color: #f6f6f6 !important;
         }
       `}} />
 
