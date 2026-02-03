@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { motion, useInView } from "motion/react";
 import localFont from 'next/font/local';
 import TiltedCard from './TiltedCard';
-import Image from 'next/image';
 
 // --- Font Configuration ---
 const geizer = localFont({
@@ -57,18 +56,22 @@ const games: Game[] = [
     title: "Club Quiz",
     suit: "clubs",
     rank: "3",
-    difficulty: "Teamwork",
-    description: "A deceptive trivia gauntlet where knowledge is secondary to consensus. Your team stands on a platform divided into four quadrants. With every wrong answer, one quadrant drops into the abyss.",
-    gameplay: "A question is projected on the wall. The team has 10 seconds to deliberate. You must verbally agree on an answer and press the corresponding button together.\n\nIf even one member presses a different button, the answer is counted as wrong regardless of correctness. You must move as one mind, or fall separately.",
-    twist: "The 'Betray' Button: You can steal points from other teams by hitting a hidden buzzer, but if the sensors catch you, your score resets to absolute zero.",
+    difficulty: "Knowledge / Reflex",
+    description: "A battle of knowledge, speed, and nerves.\nTeams compete in a multi-stage quiz where only the sharpest minds survive. Every answer counts. Every second matters. Hesitation can cost your team a place in the next round. This isn’t just about knowing the right answers — it’s about staying calm under pressure, thinking fast, and outlasting the competition.",
+    gameplay: "All interested participants must register through a Google Form. Based on their responses, 12 teams will be shortlisted to compete on stage.\nThese teams will face an intense Rapid Fire Buzzer Round, where speed and accuracy decide survival. The fastest minds advance — the rest are eliminated.\nFrom there, 7 teams move forward into the main quiz battle, consisting of multiple knowledge rounds where teams answer in sequence, with chances to pass questions to others.\nEvery stage narrows the field. Only one team will emerge as champions.",
+    twist: "You don’t just need the right answer — you need it before anyone else. Delays, wrong buzzes, and missed passes can cost your team the game. Stay alert. Stay sharp",
     rules: [
-      "5 rounds of rapid-fire trivia regarding club history and logic.",
-      "Teams of 4 must answer unanimously (all buttons pressed within 0.5s).",
-      "Wrong answers reduce the available floor space by 25%.",
-      "Absolute silence is mandatory between questions.",
+      "Each team must consist of exactly 3 members",
+      "Only one team per club is allowed to compete",
+      "Non-club members may also participate through the registration form selection process",
+      "Initial screening is done via Google Form responses",
+      "Top 12 teams qualify for the Rapid Fire Buzzer Round",
+      "After eliminations, 7 teams proceed to the main quiz rounds",
+      "The main stage consists of 5 standard quiz rounds with passing allowed between teams",
+      "Quizmaster decisions are final and binding",
     ],
     gameOver: "Elimination (The Drop)",
-    image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=400&h=400&fit=crop"
+    image: "https://i.postimg.cc/C1ZVmfNP/c6d62881-d45d-460f-9080-caf1eb38a3fa.png"
   },
   {
     id: 3,
@@ -82,9 +85,8 @@ const games: Game[] = [
     rules: [
       "Phase 1: Do NOT pick the least popular answer. (Minority gets eliminated).",
       "Phase 2: Do NOT pick the Most OR Least popular answer. (Extremes get eliminated).",
-      "Phase 3: The Audience votes to ban an option. If you picked it, you are out.",
+      "Phase 3: The top selected players fight against the audience.",
       "Absolute silence is mandatory. No discussion allowed.",
-      "If the Audience eliminates all players, the House wins.",
     ],
     gameOver: "Rejected (Social Exile)",
     image: "https://i.postimg.cc/13MZyrrS/Gemini-Generated-Image-3x7q1a3x7q1a3x7q.png"
@@ -113,17 +115,17 @@ const games: Game[] = [
     suit: "diamonds",
     rank: "10",
     difficulty: "Strategy",
-    description: "A ruthless economic simulation set in a volatile, closed market. You start with credits and a portfolio of assets. Your goal is not just to be rich, but to be the *only* one solvent when the crash hits.",
-    gameplay: "A central holographic ticker displays real-time prices. You use a tablet to buy and sell assets. Hidden throughout the arena are 'Insider Info' cards that predict the next crash.\n\nYou can trade these cards with other players, or use them to short the market before a catastrophe. Trust no one; the market is rigged.",
-    twist: "Insider trading is encouraged, but an 'SEC' AI bot roams the floor. If it scans you holding an Info Card, your assets are frozen instantly.",
+    description: "A ruthlessly volatile economic simulation consisting of 4 root conglomerates. You are not just a trader; you are a Founder. With capital locked in your own roots and liquid assets to wage war elsewhere, you must navigate four phases of market chaos. Sentiment, demand, and crisis management will determine who owns the market and who gets liquidated.",
+    gameplay: "You start with $1000. The catch? $400 is forcefully locked into your Root Company. The remaining $600 is your weapon for cross-trading.\n\nThe war unfolds in 4 Phases:\nPhase 1 (Investment): Company values fluctuate dynamically based on demand.\nPhase 2 (Sentiment): Rumors and public opinion sway values.\nPhase 3 (Crisis): Real-world scenarios demand instant decisions.\nPhase 4 (The Pitch): Top Founders fight for one last valuation boost.",
+    twist: "The fool leaps and finds the abyss; the wise man stands still and finds the bridge. Do not feed the beast of the market until you have counted its teeth and measured its bite.",
     rules: [
-      "Start with 1000 credits. Buy low, sell high.",
-      "Maintain a positive balance after the inevitable Market Crash event.",
-      "Trading stops immediately when the bell rings.",
-      "Bankruptcy results in immediate removal.",
+      "4 Root Companies. Teams assigned as Founders under one Root.",
+      "Budget: $1000 ($400 Locked Root Investment + $600 Liquid).",
+      "Values fluctuate based on Demand, Sentiment, and Decisions.",
+      "Phase 4 is exclusive to top-performing teams.",
     ],
-    gameOver: "Bankruptcy (Liquidated)",
-    image: "https://images.unsplash.com/photo-1611974765270-ca12586343bb?w=400&h=400&fit=crop"
+    gameOver: "Liquidation (Bankruptcy)",
+    image: "https://i.postimg.cc/DyR4gqc3/Gemini-Generated-Image-hsl40phsl40phsl4.png"
   },
   {
     id: 6,
@@ -131,16 +133,17 @@ const games: Game[] = [
     suit: "spades",
     rank: "8",
     difficulty: "Strategy / Bidding",
-    description: "A three-phase economic warfare simulation. You begin in the dark, bidding on sealed mystery boxes containing words, power-ups, or penalties. Only the astute survive the Blind Auction to face the Terminal Challenges. The final two teams enter a high-stakes Open Auction for vintage stamps where time equals value.",
-    gameplay: "Phase 1: Blind Auction (6 Teams). 5 Rounds of sealed bidding on Mystery Boxes based on cryptic hints. Highest bid wins; ties favor the underdog. Form word combos for points.\n\nPhase 2: Terminal Challenge (Top 4). Solve time-bound logic puzzles on fixed terminals. Accuracy determines survival.\n\nPhase 3: The Finale (Top 2). Live open auction for Stamps. Older stamps carry higher base points.",
-    twist: "In Phase 1, the box is a gamble. You might bid your fortune on a box that contains a 'Penalty' card, sabotaging your own score.",
+    description: "A multi-panel economic warfare simulation. Teams compete in independent panels, bidding blindly on mystery boxes containing words and hidden effects. Only the top scorers across all panels survive to enter the Open Auction Finale.",
+    gameplay: "Phase 1 (Blind Auction): 5 Rounds of sealed bidding on Mystery Boxes. Hints are cryptic. Highest bid wins; ties favor the underdog. Boxes contain Words and an Effect Card (Power-up, Penalty, or Neutral).\n\nQualification: Scores are compared globally across all panels. Only the top 15–20 teams advance.\n\nPhase 2 (The Finale): A high-stakes Live Open Auction for Stamps. Value is determined by age—older stamps mean higher points.",
+    twist: "Throw your fortune at a sealed mystery, but be warned: some prizes are just beautifully wrapped sabotages waiting to detonate in your hands.",
     rules: [
-      "Phase 1: Sealed bids (2 min limit). Highest bid wins.",
-      "Box Contents: Words (Always), Power-ups (Maybe), Penalties (Maybe).",
-      "Progression: Top 4 advance to Terminals, Top 2 advance to Final Auction.",
-      "Finale: Bidding is open. Stamp Value increases with Age.",
+      "Sealed Bidding: 2 mins per round. Highest bid wins.",
+      "Tie Breaker: Team with the LOWER total score wins the box.",
+      "Scoring: Word Combinations + Effect Card modifiers.",
+      "Qualification: Top 15-20 teams GLOBALLY (not just per panel).",
+      "Finale: Live bidding on Stamps. Highest Stamp Value wins.",
     ],
-    gameOver: "Outbid (Eliminated)",
+    gameOver: "Insolvent (Global Elimination)",
     image: "https://i.postimg.cc/3JqDw28F/blackbox.jpg"
   },
   {
@@ -323,7 +326,7 @@ const GameModal = ({ game, onClose }: { game: Game; onClose: () => void }) => {
             alt=""
             className="w-full h-full object-cover opacity-60"
           />
-          {/* The Blur/Darken Overlay */}
+          {/* The Blur/Darken Overlay - Darker for readability, Neutral Black */}
           <div className="absolute inset-0 bg-black/80 backdrop-blur-xl" />
         </div>
 
@@ -400,12 +403,26 @@ const GameModal = ({ game, onClose }: { game: Game; onClose: () => void }) => {
 // --- Main Page Component ---
 export default function AbyssEventPage() {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Removed: scrolled state and useEffect listeners are no longer needed 
-  // since we aren't tracking scroll for a sticky header anymore.
+  useEffect(() => {
+    const loadAssets = async () => {
+      const imagePromise = new Promise((resolve) => {
+        const img = new Image();
+        img.src = "/abyss.png";
+        img.onload = resolve;
+        img.onerror = resolve; // Resolve even on error to avoid sticking
+      });
+
+      // Wait for both the timer AND the image to be ready
+      await Promise.all([imagePromise]);
+    };
+
+    loadAssets();
+  }, []);
 
   const handleRegister = () => {
-    window.location.href = "https://example.com";
+    window.location.href = "https://gdg.community.dev/events/details/google-gdg-ludhiana-presents-gdg-abyss-the-depth-stares-back/?code=NITH";
   };
 
   return (
@@ -417,7 +434,7 @@ export default function AbyssEventPage() {
         <title>ABYSS | Borderland</title>
       </Head>
 
-      {/* Style to hide default theme toggles */}
+      {/* --- ADDED STYLE TO HIDE THE DARK MODE BUTTON --- */}
       <style dangerouslySetInnerHTML={{
         __html: `
         .theme-toggle,
@@ -428,62 +445,48 @@ export default function AbyssEventPage() {
         .mode-toggle {
             display: none !important;
         }
-        #social-links a{
-          color: #f6f6f6 !important;
-        }
-        
-        #gdg-logo{
-          background-color: transparent  !important;
-          border-color: transparent !important;
-          color: #f6f6f6 !important;
-        }
       `}} />
 
+      {/* HERO SECTION - UPDATED FOR MOBILE AND LAPTOP RESPONSIVENESS */}
+      <header className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
 
-      <header className="relative w-full h-dvh flex flex-col items-center justify-center overflow-hidden">
-
+        {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <Image
-            height={1080}
-            width={1920}
+          <img
             src="/abyss.png"
             alt="Post-apocalyptic city"
             className="w-full h-full object-cover object-center"
           />
 
-          {/* RED SATURATION LAYER */}
-          <div className="absolute inset-0 bg-red-900/20 mix-blend-overlay" />
-
-          {/* EDGE VIGNETTE GRADIENT */}
+          {/* UPDATED: Vignettes now use Neutral Black/Transparent instead of Reddish-Black */}
           <div
             className="absolute inset-0"
             style={{
               background: `
                   radial-gradient(ellipse at center, 
                     transparent 25%, 
-                    rgba(60, 0, 0, 0.25) 50%, 
-                    rgba(40, 0, 0, 0.45) 70%, 
-                    rgba(25, 0, 0, 0.65) 85%, 
-                    rgba(10, 0, 0, 0.8) 100%
+                    rgba(0, 0, 0, 0.25) 50%, 
+                    rgba(0, 0, 0, 0.45) 70%, 
+                    rgba(0, 0, 0, 0.65) 85%, 
+                    rgba(0, 0, 0, 0.8) 100%
                   )
                 `
             }}
           />
 
-          {/* CORNER VIGNETTE */}
           <div
             className="absolute inset-0"
             style={{
               background: `
-                  radial-gradient(ellipse 70% 70% at 0% 0%, rgba(100, 0, 0, 0.35) 0%, transparent 45%),
-                  radial-gradient(ellipse 70% 70% at 100% 0%, rgba(100, 0, 0, 0.35) 0%, transparent 45%),
-                  radial-gradient(ellipse 70% 70% at 0% 100%, rgba(100, 0, 0, 0.45) 0%, transparent 45%),
-                  radial-gradient(ellipse 70% 70% at 100% 100%, rgba(100, 0, 0, 0.45) 0%, transparent 45%)
+                  radial-gradient(ellipse 70% 70% at 0% 0%, rgba(0, 0, 0, 0.35) 0%, transparent 45%),
+                  radial-gradient(ellipse 70% 70% at 100% 0%, rgba(0, 0, 0, 0.35) 0%, transparent 45%),
+                  radial-gradient(ellipse 70% 70% at 0% 100%, rgba(0, 0, 0, 0.45) 0%, transparent 45%),
+                  radial-gradient(ellipse 70% 70% at 100% 100%, rgba(0, 0, 0, 0.45) 0%, transparent 45%)
                 `
             }}
           />
 
-          {/* Text Readability Overlay */}
+          {/* Text Readability Overlay - Pure Black Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/25 to-black/35" />
 
           {/* Texture Overlay */}
@@ -492,20 +495,15 @@ export default function AbyssEventPage() {
           {/* SEAMLESS BLEND OVERLAY */}
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#050505] via-[#030303]/95 to-transparent pointer-events-none" />
 
-          {/* TOP EDGE FADE */}
-          <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#120000]/60 via-[#080000]/30 to-transparent pointer-events-none" />
-
-          {/* LEFT EDGE FADE */}
-          <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#120000]/50 via-[#080000]/20 to-transparent pointer-events-none" />
-
-          {/* RIGHT EDGE FADE */}
-          <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#120000]/50 via-[#080000]/20 to-transparent pointer-events-none" />
+          {/* Edge Fades - Pure Black */}
+          <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-black/50 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-black/50 via-black/20 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center">
 
-          {/* MODIFIED: Countdown Container */}
-          {/* Removed the 'scrolled ? opacity-0' logic. It is now just a static element. */}
+          {/* Countdown Container */}
           <div className="mb-12">
             <Countdown />
           </div>
@@ -562,6 +560,7 @@ export default function AbyssEventPage() {
               }
             }}
           >
+            {/* Hover background fill */}
             <span className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Register Now</span>
           </motion.button>
