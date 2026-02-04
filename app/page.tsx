@@ -6,6 +6,8 @@ import PromoBanner from "./components/home/sections/promo-banner";
 import { AboutScrollSection } from "./components/about/about-scroll-section";
 import { TeamsSection } from "./components/teams/teams-section";
 import EventsSection from "./components/home/sections/EventsSection";
+import { SocietyLeadSection } from "./components/home/sections/LeadSection";
+
 
 export default function Home() {
 
@@ -15,6 +17,7 @@ export default function Home() {
       <PromoBanner />
       <AboutScrollSection />
       <EventsSection />
+      <SocietyLeadSection />
       <TeamsSection />
       <Footer />
 

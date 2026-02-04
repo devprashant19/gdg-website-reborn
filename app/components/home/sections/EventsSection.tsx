@@ -34,7 +34,7 @@ function EventsSection() {
       id="members"
       className="
             
-            mb-50
+           
   max-w-7xl
   mx-auto
   p-4 pt-10 md:p-16 md:pt-0
