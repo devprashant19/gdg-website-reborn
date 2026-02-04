@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/app/components/ui/button"; // Adjust path if necessary
+import { Button } from "@/app/components/ui/button"; 
 import { motion } from "framer-motion";
 
 const PromoBanner = () => {
