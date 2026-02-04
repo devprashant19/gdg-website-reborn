@@ -122,7 +122,7 @@ export function AboutScrollSection() {
 
             {/* Video Placeholder */}
             <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group cursor-pointer">
-              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?autoplay=1&controls=0&loop=1&t=255" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
+              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?autoplay=1&controls=0&loop=1&t=55" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
 
               {/* Decorative corners */}
               <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#4285F4]/50" />
