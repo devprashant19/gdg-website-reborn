@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { Volume2, VolumeX } from "lucide-react";
 
 // Register GSAP plugins (Safety check for Next.js SSR)
 if (typeof window !== "undefined") {
@@ -13,6 +14,16 @@ if (typeof window !== "undefined") {
 export function AboutScrollSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   useGSAP(() => {
     const container = containerRef.current;
@@ -38,6 +49,33 @@ export function AboutScrollSection() {
         scrub: 1.5,
       },
     });
+
+    // Video play/pause on scroll
+    if (videoRef.current && videoContainerRef.current) {
+      ScrollTrigger.create({
+        trigger: videoContainerRef.current,
+        onEnter: () => {
+          if (videoRef.current) {
+            videoRef.current.play();
+          }
+        },
+        onLeave: () => {
+          if (videoRef.current) {
+            videoRef.current.pause();
+          }
+        },
+        onEnterBack: () => {
+          if (videoRef.current) {
+            videoRef.current.play();
+          }
+        },
+        onLeaveBack: () => {
+          if (videoRef.current) {
+            videoRef.current.pause();
+          }
+        },
+      });
+    }
 
   }, { scope: containerRef });
 
@@ -116,19 +154,41 @@ export function AboutScrollSection() {
                 Google Developer Groups (GDG) on campus are university-based community groups for students interested in Google developer technologies. Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.
               </p>
               <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
-                By joining GDG NITH, you become part of a global community of developers passionate about technology, innovation, and making a difference through code.
+                By joining GDG, you become part of a global community of developers passionate about technology, innovation, and making a difference through code.
               </p>
             </div>
 
             {/* Video Placeholder */}
-            <div className="order-1 lg:order-2 relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group cursor-pointer">
-              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?start=0&amp;end=61" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
+            <div 
+              ref={videoContainerRef}
+              className="order-1 lg:order-2 relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group"
+            >
+              <video
+                ref={videoRef}
+                src="https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknUhmjV2wohSYpPv6swAq9aJ07bftuTIEH81iK"
+                muted={isMuted}
+                loop
+                className="w-full h-full object-cover"
+              />
+
+              {/* Mute Button */}
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-all duration-200 text-white z-10"
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? (
+                  <VolumeX size={20} />
+                ) : (
+                  <Volume2 size={20} />
+                )}
+              </button>
 
               {/* Decorative corners */}
-              <div className="absolute top-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-t-2 border-[#4285F4]/50" />
-              <div className="absolute top-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-t-2 border-[#EA4335]/50" />
-              <div className="absolute bottom-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-b-2 border-[#FBBC05]/50" />
-              <div className="absolute bottom-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-b-2 border-[#34A853]/50" />
+              <div className="absolute top-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-t-2 border-[#4285F4]/50 pointer-events-none" />
+              <div className="absolute top-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-t-2 border-[#EA4335]/50 pointer-events-none" />
+              <div className="absolute bottom-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-b-2 border-[#FBBC05]/50 pointer-events-none" />
+              <div className="absolute bottom-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-b-2 border-[#34A853]/50 pointer-events-none" />
             </div>
           </div>
         </div>

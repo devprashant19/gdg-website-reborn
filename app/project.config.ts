@@ -2,7 +2,7 @@ import { LinkNavLinksType } from "@/app/components/navbar/resizable-navbar";
 
 export const appConfig = {
   name: "Developer Student Clubs",
-  shortName: "GDG NITH",
+  shortName: "GDG",
   tagline: "Where Logic Meets Creativity",
   description:
     "DSC is the official programming club focused on competitive programming, AI/ML, and development.",

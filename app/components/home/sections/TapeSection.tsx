@@ -23,7 +23,7 @@ export default function BrandingTape() {
           transition={{ duration: 0.8 }}
           className="text-[15vw] md:text-[12vw] font-black uppercase leading-none tracking-tighter select-none transform scale-x-110 md:scale-x-125"
         >
-          GDG NITH
+          GDG
         </motion.h1>
       </div>
 

@@ -44,7 +44,7 @@ export function SocietyLeadSection() {
                     Soham Juneja
                   </h2>
                   <p className="mt-1 text-sm md:text-base text-muted-foreground">
-                    Society Lead · GDG NITH
+                    Campus Lead · GDG NITH-CHAPTER
                   </p>
                 </div>
 
