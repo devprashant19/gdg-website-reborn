@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
 import { motion } from "framer-motion";
-import { cn, smoothScrollTo } from "@/app/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight, Sparkle, Sparkles } from "lucide-react";
 
 const PromoBanner = () => {

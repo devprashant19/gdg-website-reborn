@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/app/components/ui/border-beam";
 import Image from "next/image";

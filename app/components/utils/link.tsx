@@ -1,6 +1,6 @@
 "use client";
 import { Button, ButtonProps } from "@/app/components/ui/button";
-import { getWindowOrigin } from "@/app/lib/env";
+import { getWindowOrigin } from "@/lib/env";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -17,10 +17,7 @@ export function RedirectWithSearchParamsLink({ href, children, ...props }: Redir
     })
     return (
         <Button
-            rounded="full"
-            variant="default_light"
-            width="sm"
-            effect="shineHover"
+            variant="default"
             {...props}
             asChild
         >

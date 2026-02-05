@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react"; // Import X icon for Close button
 import navlinks from "./navlinks";
-import { cn, smoothScrollTo } from "../../lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 // ThemeSwitcher import removed
 
 // Social Icons - You can replace these with actual icons if available in your lib

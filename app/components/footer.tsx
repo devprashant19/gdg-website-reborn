@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Instagram, Twitter, Github } from "lucide-react";
 import TapeSection from "./home/sections/TapeSection";
 import { ApplicationInfo } from "./logo";
-import { smoothScrollTo } from "@/app/lib/utils";
+import { smoothScrollTo } from "@/lib/utils";
 
 
 const lists = {

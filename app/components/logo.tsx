@@ -1,7 +1,7 @@
 // app/components/logo.tsx
 import React from "react";
 import Image from "next/image";
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 
 
 export const ApplicationInfo = ({ className }: { className?: string }) => {

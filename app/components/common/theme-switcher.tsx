@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
 import { type themeType } from "@/app/constants/theme";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
