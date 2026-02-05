@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+/* Smooth scroll behavior for all anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {

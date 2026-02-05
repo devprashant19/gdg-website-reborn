@@ -55,22 +55,22 @@ export function AboutScrollSection() {
       ScrollTrigger.create({
         trigger: videoContainerRef.current,
         onEnter: () => {
-          if (videoRef.current) {
-            videoRef.current.play();
+          if (videoRef.current && videoRef.current.paused) {
+            videoRef.current.play().catch(() => {});
           }
         },
         onLeave: () => {
-          if (videoRef.current) {
+          if (videoRef.current && !videoRef.current.paused) {
             videoRef.current.pause();
           }
         },
         onEnterBack: () => {
-          if (videoRef.current) {
-            videoRef.current.play();
+          if (videoRef.current && videoRef.current.paused) {
+            videoRef.current.play().catch(() => {});
           }
         },
         onLeaveBack: () => {
-          if (videoRef.current) {
+          if (videoRef.current && !videoRef.current.paused) {
             videoRef.current.pause();
           }
         },

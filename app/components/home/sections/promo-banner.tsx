@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
 import { motion } from "framer-motion";
-import { cn } from "@/app/lib/utils";
+import { cn, smoothScrollTo } from "@/app/lib/utils";
 import { ArrowRight, ArrowUpRight, Sparkle, Sparkles } from "lucide-react";
 
 const PromoBanner = () => {
@@ -133,10 +133,11 @@ const PromoBanner = () => {
                                     size="sm"
                                     variant="ghost"
                                     className="md:hidden text-white/50 hover:text-white mt-2"
+                                    onClick={() => smoothScrollTo('events', 600)}
                                     asChild>
-                                    <Link href="/events/abyss">
+                                    <a href="#events">
                                         LEARN MORE <ArrowUpRight size={16} />
-                                    </Link>
+                                    </a>
                                 </Button>
 
                             </motion.div>
