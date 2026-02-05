@@ -36,7 +36,7 @@ const productSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "GDG NITH",
+  title: "GDG",
   description: "Google Developer Groups - NIT Hamirpur",
 };
 
