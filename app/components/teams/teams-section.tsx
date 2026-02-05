@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { InfiniteSlider } from "../ui/infinite-slider";
 import Link from "next/link";
+import { SocietyLeadSection } from "../home/sections/LeadSection";
 
 interface TeamMember {
   image: string;
@@ -46,7 +47,7 @@ export const TeamsSection = () => {
     fetchTeamData();
   }, []);
   return (
-    <section className="py-12 md:py-24 mt-0 md:mt-0 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
+    <section className="py-12 md:py-24 mt-0 md:-mt-20 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center gap-6">
         <Link
           href="/team"
@@ -72,6 +73,7 @@ export const TeamsSection = () => {
           The creative minds behind the GDG NITH-CHAPTER.
         </p>
       </div>
+      <SocietyLeadSection />
 
       <div className="space-y-8">
         {/* Row 1: Left Scroll - 3rd Year */}
