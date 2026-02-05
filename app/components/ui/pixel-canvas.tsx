@@ -116,7 +116,10 @@ class Pixel {
   }
 }
 
-class PixelCanvasElement extends HTMLElement {
+let PixelCanvasElement: any
+
+if (typeof window !== 'undefined') {
+  class PixelCanvasElementClass extends HTMLElement {
   private canvas: HTMLCanvasElement
   private ctx: CanvasRenderingContext2D | null
   private pixels: Pixel[] = []
@@ -326,21 +329,25 @@ class PixelCanvasElement extends HTMLElement {
     animate()
   }
 }
+  PixelCanvasElement = PixelCanvasElementClass
+}
 
 /**
  * TYPESCRIPT FIX:
  * We need to tell TypeScript that <pixel-canvas> is a valid intrinsic element.
  */
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'pixel-canvas': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        'data-gap'?: number;
-        'data-speed'?: number;
-        'data-colors'?: string;
-        'data-variant'?: string;
-        'data-no-focus'?: boolean;
-      }, HTMLElement>;
+  namespace React {
+    namespace JSX {
+      interface IntrinsicElements {
+        'pixel-canvas': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+          'data-gap'?: number;
+          'data-speed'?: number;
+          'data-colors'?: string;
+          'data-variant'?: string;
+          'data-no-focus'?: boolean;
+        }, HTMLElement>;
+      }
     }
   }
 }

@@ -81,7 +81,7 @@ const PromoBanner = () => {
                             variant="outline"
                             className={cn("hidden md:inline-flex")}
                             asChild>
-                            <Link href="/events/abyss">
+                            <Link href="/events/Abyss">
                                 LEARN MORE
                                 <ArrowUpRight size={20} className="animate-pulse size-4" />
                             </Link>
@@ -123,7 +123,7 @@ const PromoBanner = () => {
                                         "bg-white text-neutral-900 hover:scale-105 border-2 border-white hover:bg-white/10 backdrop-blur-lg hover:text-white shadow-xl hover:shadow-2xl"
                                     )}
                                     asChild>
-                                    <Link href="/events/Abyss">
+                                    <Link href="https://gdg.community.dev/events/details/google-gdg-ludhiana-presents-gdg-abyss-the-depth-stares-back/?code=NITH">
                                         <Sparkles size={20} className="animate-pulse size-4" />
                                         REGISTER NOW
                                     </Link>
