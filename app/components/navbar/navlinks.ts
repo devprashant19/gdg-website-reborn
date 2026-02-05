@@ -5,11 +5,9 @@ interface INavLinks {
 
 const navlinks: INavLinks[] = [
   { text: "Home", to: "/" },
-  { text: "Achievements", to: "/achievements" },
   { text: "Events", to: "/events" },
   { text: "Team", to: "/team" },
   { text: "Projects", to: "/projects" },
-  { text: "Blogs", to: "/blogs" },
   { text: "Contact Us", to: "/contact" },
 ];
 
