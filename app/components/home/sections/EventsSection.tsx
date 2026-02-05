@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-import { galleryImages } from "@/src/settings";
 import { CardCarousel } from "../../animation/card-carousel";
 import { InView } from "../../animation/in-view";
 import { Icon } from "../../icons";
@@ -10,11 +9,26 @@ import { Separator } from "../../ui/separator";
 import { ButtonLink } from "../../utils/link";
 import Link from "next/link";
 
-
-
+interface EventData {
+  id: string;
+  year: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  details: string;
+}
 
 function EventsSection() {
   const containerRef = useRef(null);
+  const [events, setEvents] = useState<EventData[]>([]);
+
+  useEffect(() => {
+    fetch("/assets/event-data.json")
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch((err) => console.error("Failed to load events:", err));
+  }, []);
 
   const variants = {
     hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
@@ -75,7 +89,7 @@ function EventsSection() {
         </div>
       </div>
       <CardCarousel
-        images={galleryImages.map(member => ({ src: member, alt: "Member" }))}
+        images={events.map(event => ({ src: event.image, alt: event.title }))}
         autoplayDelay={2000}
         showPagination={true}
         showNavigation={true}

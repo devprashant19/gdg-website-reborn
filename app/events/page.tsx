@@ -136,14 +136,12 @@ export default function EventsPage() {
                           transition={{ duration: 0.3, delay: index * 0.1 }}
                           className="w-full mx-auto"
                         >
-                          <Link href={`/events/${event.id}`} passHref legacyBehavior>
-                            <a tabIndex={0} aria-label={`View details for ${event.title}`}> 
-                              <SciFiCard
-                                title={event.title}
-                                bgImageSrc={event.image}
-                                themeColor={getThemeColor(index)}
-                              />
-                            </a>
+                          <Link href={`/events/${event.id}`} tabIndex={0} aria-label={`View details for ${event.title}`}>
+                            <SciFiCard
+                              title={event.title}
+                              bgImageSrc={event.image}
+                              themeColor={getThemeColor(index)}
+                            />
                           </Link>
                         </motion.div>
                       ))
