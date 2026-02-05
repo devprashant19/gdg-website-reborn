@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   title: "GDG",
   description: "Google Developer Groups - NIT Hamirpur-Chapter",
   icons: {
-    icon: "/assets/gdgLogo.gif",
+    icon: "/assets/logo.png",
   },
 };
 

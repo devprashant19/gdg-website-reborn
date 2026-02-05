@@ -115,11 +115,21 @@ export const Navbar = () => {
           className="hidden md:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
           id="social-links"
         >
-          {socialLinks.map((link) => (
-            <a href={link.to} key={link.name} className="text-foreground hover:text-primary transition-colors">
-              <link.icon className="size-5" />
-            </a>
-          ))}
+          {socialLinks.map((link) => {
+            const isMailto = link.to.startsWith("mailto:");
+            const isExternal = link.to.startsWith("http") || link.to.startsWith("mailto:");
+            return (
+              <a 
+                href={link.to} 
+                key={link.name}
+                target={isExternal && !isMailto ? "_blank" : undefined}
+                rel={isExternal && !isMailto ? "noopener noreferrer" : undefined}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                <link.icon className="size-5" />
+              </a>
+            );
+          })}
         </motion.div>
 
         {/* Right Side: Menu Button Only */}
@@ -259,9 +269,14 @@ export const Navbar = () => {
 };
 
 const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => {
+  const isMailto = href.startsWith("mailto:");
+  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+  
   return (
     <a
       href={href}
+      target={isExternal && !isMailto ? "_blank" : undefined}
+      rel={isExternal && !isMailto ? "noopener noreferrer" : undefined}
       className="size-10 rounded-full shadow bg-card border border-border flex items-center justify-center text-foreground hover:text-primary transition-all"
     >
       {icon}
