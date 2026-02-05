@@ -1,6 +1,6 @@
 "use client";
 import { all_themes } from "@/app/constants/theme";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Next13ProgressBar } from "next13-progressbar";

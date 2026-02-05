@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ai-ml-2026",
+    "year": "2026",
+    "title": "AI & Machine Learning Conference 2026",
+    "description": "Exploring the future of artificial intelligence",
+    "date": "February 20-21, 2026",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknKM4j5PyFuS4N6AgzcnwqTC7bM8PQBm9le0VG",
+    "details": "Dive deep into the latest AI advancements, from GPT models to computer vision. Network with AI researchers and practitioners. Hands-on workshops on neural networks and deep learning frameworks."
+  },
+  {
+    "id": "cloud-summit-2026",
+    "year": "2026",
+    "title": "Global Cloud Computing Summit 2026",
+    "description": "Scalable architecture and serverless solutions",
+    "date": "March 15-16, 2026",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknBCoehagFTjmM0OzgQrNi6Ao5GUV3vS9qIKcL",
+    "details": "Explore the latest in cloud infrastructure, microservices, and DevOps practices. Learn how to build resilient, scalable applications using AWS, Azure, and Google Cloud."
+  },
+  {
+    "id": "web3-summit-2026",
+    "year": "2026",
+    "title": "Web3 Developer Summit",
+    "description": "Building the decentralized web",
+    "date": "March 10-12, 2026",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknkJNVSnOOw1VM5YclZyNSRAiFfgXuJIBp9z3e",
+    "details": "Learn about blockchain development, smart contracts, and DeFi. Connect with Web3 pioneers and discover opportunities in the decentralized ecosystem. Workshops on Solidity, Rust, and dApp development."
+  },
+  {
+    "id": "devops-cloud-2026",
+    "year": "2026",
+    "title": "DevOps & Cloud Native Conference",
+    "description": "Modern infrastructure and deployment strategies",
+    "date": "April 15-16, 2026",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknl0tW6hyaD3vtcS7qHonQOE40sxY6WXGaKjgB",
+    "details": "Master Kubernetes, Docker, and CI/CD pipelines. Learn about GitOps, observability, and security best practices. Real-world case studies from leading tech companies."
+  },
+  {
+    "id": "mobile-dev-2025",
+    "year": "2025",
+    "title": "Mobile Dev Summit 2025",
+    "description": "Cross-platform mobile development",
+    "date": "June 5-7, 2025",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknnadN41ZaFYKcj2zlMoVT4Cv9Ng80syPRIfE7",
+    "details": "Explore Flutter, React Native, and Swift. Build amazing mobile experiences with the latest tools and frameworks. Sessions on app optimization, monetization, and user retention strategies."
+  },
+  {
+    "id": "cybersecurity-2025",
+    "year": "2025",
+    "title": "Cybersecurity Tech Talk",
+    "description": "Protecting the digital world",
+    "date": "August 18-19, 2025",
+    "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknUHXGI1wohSYpPv6swAq9aJ07bftuTIEH81iK",
+    "details": "Learn about threat detection, penetration testing, and security architecture. Industry experts share insights on zero-trust security and compliance. Hands-on labs for ethical hacking."
+  }
+]

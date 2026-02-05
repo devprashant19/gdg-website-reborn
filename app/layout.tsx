@@ -37,7 +37,10 @@ const productSans = localFont({
 
 export const metadata: Metadata = {
   title: "GDG",
-  description: "Google Developer Groups - NIT Hamirpur",
+  description: "Google Developer Groups - NIT Hamirpur-Chapter",
+  icons: {
+    icon: "/assets/logo.png",
+  },
 };
 
 export default function RootLayout({

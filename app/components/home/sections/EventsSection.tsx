@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-import { galleryImages } from "@/src/settings";
 import { CardCarousel } from "../../animation/card-carousel";
 import { InView } from "../../animation/in-view";
 import { Icon } from "../../icons";
@@ -10,11 +9,26 @@ import { Separator } from "../../ui/separator";
 import { ButtonLink } from "../../utils/link";
 import Link from "next/link";
 
-
-
+interface EventData {
+  id: string;
+  year: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  details: string;
+}
 
 function EventsSection() {
   const containerRef = useRef(null);
+  const [events, setEvents] = useState<EventData[]>([]);
+
+  useEffect(() => {
+    fetch("/assets/event-data.json")
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch((err) => console.error("Failed to load events:", err));
+  }, []);
 
   const variants = {
     hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
@@ -47,17 +61,7 @@ function EventsSection() {
   md:rounded-[40px]
 "
     >
-      <Link
-        href="/events"
-        className="flex items-center gap-2 px-4 py-2 ml-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-700 transition-all group"
-      >
-        <img src="/assets/gemini-color.png" alt="Gemini" className="w-4 h-4" />
-        <span className="text-sm font-medium">Explore More</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover:translate-x-1">
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </Link>
+      
       <div className="flex flex-col justify-center pb-2 pl-4 pt-2 md:items-center ">
         <div className="flex gap-2">
           <div>
@@ -75,7 +79,7 @@ function EventsSection() {
         </div>
       </div>
       <CardCarousel
-        images={galleryImages.map(member => ({ src: member, alt: "Member" }))}
+        images={events.map(event => ({ src: event.image, alt: event.title }))}
         autoplayDelay={2000}
         showPagination={true}
         showNavigation={true}

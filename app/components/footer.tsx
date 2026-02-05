@@ -3,28 +3,43 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Instagram, Twitter, Github } from "lucide-react";
 import TapeSection from "./home/sections/TapeSection";
 import { ApplicationInfo } from "./logo";
+import { smoothScrollTo } from "@/lib/utils";
 
 
 const lists = {
   "ABOUT US": [
-    { title: "Our Story", link: "/about" },
-    { title: "The Team", link: "/Team" },
-    { title: "Events", link: "/events" },
-    { title: "Guidelines", link: "/guidelines" },
+    { title: "Home", anchorId: "home" },
+    { title: "Team", anchorId: "team" },
+    { title: "Events", anchorId: "events" },
   ],
   "GET INVOLVED": [
-    { title: "Join Chapter", link: "/sign-up" },
-    { title: "Our Projects", link: "/projects" },
-    { title: "Sponsorships", link: "/contact" },
+    { title: "GitHub", link: "https://github.com/GDSC-NITH" },
+    { title: "Instagram", link: "https://www.instagram.com/nith_gdgl?igsh=MXNkODU4bGh1eGo1NQ==" },
+    { title: "Our Projects", link: "/coming-soon" },
   ],
 };
 
 export default function Footer() {
+  const pathname = usePathname();
   const { scrollYProgress } = useScroll();
+
+  const handleFooterNavClick = (item: any) => {
+    if (item.anchorId) {
+      // About Us links with anchor IDs
+      if (pathname === "/") {
+        // On home page - smooth scroll
+        smoothScrollTo(item.anchorId, 600);
+      } else {
+        // Not on home page - navigate to home then scroll
+        window.location.href = "/?section=" + item.anchorId;
+      }
+    }
+  };
 
   const footerScale = useTransform(scrollYProgress, [0.9, 1], [0.95, 1]);
   const footerOpacity = useTransform(scrollYProgress, [0.9, 0.98], [0, 1]);
@@ -62,10 +77,9 @@ export default function Footer() {
               {/* SOCIAL BUTTONS with Hover Effects */}
               <div className="flex gap-4">
                 {[
-                  { Icon: Linkedin, href: "https://linkedin.com" },
-                  { Icon: Instagram, href: "https://instagram.com" },
-                  { Icon: Twitter, href: "https://twitter.com" },
-                  { Icon: Github, href: "https://github.com" }
+                  { Icon: Linkedin, href: "https://www.linkedin.com/company/dsc-nit-hamirpur/" },
+                  { Icon: Instagram, href: "https://www.instagram.com/nith_gdgl?igsh=MXNkODU4bGh1eGo1NQ==" },
+                  { Icon: Github, href: "https://github.com/GDSC-NITH" }
                 ].map((social, i) => (
                   <motion.a
                     key={i}
@@ -88,16 +102,32 @@ export default function Footer() {
                 <div key={key} className="flex flex-col gap-4">
                   <span className="text-muted-foreground text-[10px] tracking-[0.4em] font-black uppercase opacity-50">{key}</span>
                   <ul className="flex flex-col gap-3">
-                    {value.map((item) => (
-                      <li key={item.title}>
-                        <Link
-                          href={item.link}
-                          className="text-foreground/70 text-xs font-light hover:text-[#4285F4] transition-all hover:pl-1 inline-block"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
+                    {value.map((item: any) => {
+                      // Check if it's an ABOUT US item (with anchorId) or GET INVOLVED item (with link)
+                      if (item.anchorId) {
+                        return (
+                          <li key={item.title}>
+                            <button
+                              onClick={() => handleFooterNavClick(item)}
+                              className="text-foreground/70 text-xs font-light hover:text-[#4285F4] transition-all hover:pl-1 inline-block cursor-pointer bg-none border-none p-0"
+                            >
+                              {item.title}
+                            </button>
+                          </li>
+                        );
+                      } else {
+                        return (
+                          <li key={item.title}>
+                            <Link
+                              href={item.link}
+                              className="text-foreground/70 text-xs font-light hover:text-[#4285F4] transition-all hover:pl-1 inline-block"
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        );
+                      }
+                    })}
                   </ul>
                 </div>
               ))}
@@ -109,7 +139,6 @@ export default function Footer() {
           <TapeSection />
         </motion.div>
       </footer>
-    </ >
-
+  </>
   );
 }

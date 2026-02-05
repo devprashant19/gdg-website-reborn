@@ -1,7 +1,7 @@
 
 
 import { SpinningLogosProps } from '@/app/components/animation/spinning-logos';
-import { LinkNavLinksType } from "@/app/components/common/resizable-navbar";
+import { LinkNavLinksType } from "@/app/components/navbar/resizable-navbar";
 import localFont from 'next/font/local';
 import React from 'react';
 

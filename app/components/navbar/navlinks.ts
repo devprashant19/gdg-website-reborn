@@ -1,14 +1,15 @@
 interface INavLinks {
   text: string;
   to: string;
+  anchorId?: string;
 }
 
 const navlinks: INavLinks[] = [
-  { text: "Home", to: "/" },
-  { text: "Events", to: "/events" },
-  { text: "Team", to: "/team" },
-  { text: "Projects", to: "/projects" },
-  { text: "Contact Us", to: "/contact" },
+  { text: "Home", to: "/", anchorId: "home" },
+  { text: "Events", to: "/events", anchorId: "events" },
+  { text: "Team", to: "/team", anchorId: "team" },
+  { text: "Projects", to: "/coming-soon" },
+  { text: "Contact Us", to: "/contact", anchorId: "contact" },
 ];
 
 export const LINKS_GROUP_ONE_COUNT = 5;

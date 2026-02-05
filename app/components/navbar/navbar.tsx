@@ -7,40 +7,42 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react"; // Import X icon for Close button
 import navlinks from "./navlinks";
-import { cn } from "../../lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 // ThemeSwitcher import removed
 
 // Social Icons - You can replace these with actual icons if available in your lib
-import { IconBrandInstagram, IconBrandTwitter, IconBrandFacebook, IconBrandMedium, IconBrandGithub, IconBrandYoutube } from "@tabler/icons-react";
+import { IconBrandInstagram, IconBrandGithub, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
 import { Button } from "../ui/button";
 import { ThemeSwitcher } from "../common/theme-switcher";
 import { ApplicationInfo } from "../logo";
 
 const socialLinks = [
   {
-    name: "Home",
-    to: "/",
+    name: "GitHub",
+    to: "https://github.com/GDSC-NITH",
+    icon: IconBrandGithub,
+  },
+  {
+    name: "Instagram",
+    to: "https://www.instagram.com/nith_gdgl?igsh=MXNkODU4bGh1eGo1NQ==",
     icon: IconBrandInstagram,
   },
   {
-    name: "About",
-    to: "/about",
-    icon: IconBrandTwitter,
+    name: "LinkedIn",
+    to: "https://www.linkedin.com/company/dsc-nit-hamirpur/",
+    icon: IconBrandLinkedin,
   },
   {
-    name: "Events",
-    to: "/events",
-    icon: IconBrandFacebook,
+    name: "Email",
+    to: "mailto:gdscnith@gmail.com",
+    icon: IconMail,
   },
-  {
-    name: "Contact",
-    to: "/contact",
-    icon: IconBrandMedium,
-  },
+  
 ]
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Handle scroll detection with standard React hooks to avoid Turbopack issues
   useEffect(() => {
@@ -113,11 +115,21 @@ export const Navbar = () => {
           className="hidden md:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
           id="social-links"
         >
-          {socialLinks.map((link) => (
-            <a href={link.to} key={link.name} className="text-foreground hover:text-primary transition-colors">
-              <link.icon className="size-5" />
-            </a>
-          ))}
+          {socialLinks.map((link) => {
+            const isMailto = link.to.startsWith("mailto:");
+            const isExternal = link.to.startsWith("http") || link.to.startsWith("mailto:");
+            return (
+              <a 
+                href={link.to} 
+                key={link.name}
+                target={isExternal && !isMailto ? "_blank" : undefined}
+                rel={isExternal && !isMailto ? "noopener noreferrer" : undefined}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                <link.icon className="size-5" />
+              </a>
+            );
+          })}
         </motion.div>
 
         {/* Right Side: Menu Button Only */}
@@ -194,14 +206,25 @@ export const Navbar = () => {
                       exit={{ x: -50, opacity: 0 }}
                       transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
                     >
-                      <Link
-                        href={link.to}
-                        onClick={() => setIsOpen(false)}
-                        className="text-4xl md:text-6xl font-bold text-muted-foreground hover:text-(--hover-color) transition-colors duration-300 block w-max"
+                      <a
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsOpen(false);
+                          
+                          if (pathname === "/" && link.anchorId) {
+                            // On home page with anchor - smooth scroll
+                            smoothScrollTo(link.anchorId, 600);
+                          } else {
+                            // Navigate to different page
+                            window.location.href = link.to;
+                          }
+                        }}
+                        href="#"
+                        className="text-4xl md:text-6xl font-bold text-muted-foreground hover:text-(--hover-color) transition-colors duration-300 block w-max cursor-pointer"
                         style={{ "--hover-color": hoverColor } as React.CSSProperties}
                       >
                         {link.text}
-                      </Link>
+                      </a>
                     </motion.div>
                   );
                 })}
@@ -246,9 +269,14 @@ export const Navbar = () => {
 };
 
 const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => {
+  const isMailto = href.startsWith("mailto:");
+  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+  
   return (
     <a
       href={href}
+      target={isExternal && !isMailto ? "_blank" : undefined}
+      rel={isExternal && !isMailto ? "noopener noreferrer" : undefined}
       className="size-10 rounded-full shadow bg-card border border-border flex items-center justify-center text-foreground hover:text-primary transition-all"
     >
       {icon}
