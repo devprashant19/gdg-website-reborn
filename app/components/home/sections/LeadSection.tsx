@@ -5,7 +5,7 @@ import { PixelCanvas } from "@/app/components/ui/pixel-canvas"
 
 export function SocietyLeadSection() {
   return (
-    <section className="py-24 mt-0 md:mt-0 mb-0 md:mb-0 relative">
+    <section className="py-24 -mt-20 md:-mt-20 mb-0 md:mb-0 relative">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex justify-center">
           

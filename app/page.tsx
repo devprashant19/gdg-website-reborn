@@ -16,7 +16,7 @@ export default function Home() {
       <PromoBanner />
       <AboutScrollSection />
       <EventsSection />
-      <SocietyLeadSection />
+      
       <TeamsSection />
       <Footer />
 

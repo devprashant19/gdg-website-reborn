@@ -49,7 +49,7 @@ function EventsSection() {
     >
       <Link
         href="/events"
-        className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-700 transition-all group"
+        className="flex items-center gap-2 px-4 py-2 ml-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-700 transition-all group"
       >
         <img src="/assets/gemini-color.png" alt="Gemini" className="w-4 h-4" />
         <span className="text-sm font-medium">Explore More</span>
