@@ -16,8 +16,8 @@ const PromoBanner = () => {
         seconds: 0,
     });
 
-    // Set target date to Friday, Feb 6th, 2026 based on user context
-    const targetDate = new Date("2026-02-06T00:00:00");
+    // Set target date to Saturday, Feb 8th, 2026 at 3:00 PM based on user context
+    const targetDate = new Date("2026-02-08T15:00:00");
 
     useEffect(() => {
         const calculateTimeLeft = () => {
@@ -135,7 +135,7 @@ const PromoBanner = () => {
                                     className="md:hidden text-white/50 hover:text-white mt-2"
                                     onClick={() => smoothScrollTo('events', 600)}
                                     asChild>
-                                    <a href="#events">
+                                    <a href="/events/Abyss">
                                         LEARN MORE <ArrowUpRight size={16} />
                                     </a>
                                 </Button>
