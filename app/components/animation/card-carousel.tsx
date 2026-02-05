@@ -42,6 +42,8 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   .swiper {
     width: 100%;
     padding-bottom: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
   
   .swiper-slide {
@@ -52,6 +54,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
   
   .swiper-slide img {
