@@ -43,6 +43,7 @@
   --radius-sm: calc(var(--radius) - 4px);
 }
 
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to sure everything still looks the same as it did with v3.
@@ -60,6 +61,7 @@
 
 @layer base {
   :root {
+    /* outline: 1px solid red; debugging line */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -123,6 +125,7 @@
   }
 }
 
+
 #root {
   display: flex;
   flex-direction: column;
@@ -130,6 +133,7 @@
   justify-content: center;
   height: 100vh;
   position: relative;
+  
 }
 body {
   -webkit-overflow-scrolling: touch;

@@ -36,10 +36,11 @@ function EventsSection() {
             
             mb-50
   max-w-7xl
+  z-20
   mx-auto
-  p-4 pt-10 md:p-16 md:pt-0
+  p-0 pt-10 md:p-16 md:pt-0
   flex flex-col items-start gap-5
-  mt-10 md:-mt-60
+  -mt-70 md:-mt-60
   relative
   translate-y-45
   rounded-[20px]
@@ -78,7 +79,7 @@ function EventsSection() {
         autoplayDelay={2000}
         showPagination={true}
         showNavigation={true}
-        className="md:col-span-12"
+        className="w-full"
       />
     </InView>
   );

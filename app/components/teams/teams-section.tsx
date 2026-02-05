@@ -15,7 +15,7 @@ interface TeamMember {
 }
 
 const TeamMemberCard = ({ imageUrl }: { imageUrl: string }) => (
-  <div className="relative w-[3cm] h-[3cm] flex-shrink-0 overflow-hidden group">
+  <div className="relative w-[3cm] h-[3cm] flex-shrink-0 overflow-hidden group ">
     <img
       src={imageUrl}
       alt="Team member"
@@ -46,7 +46,7 @@ export const TeamsSection = () => {
     fetchTeamData();
   }, []);
   return (
-    <section className="py-12 md:py-24 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
+    <section className="py-12 md:py-24 mt-0 md:mt-0 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center gap-6">
         <Link
           href="/team"

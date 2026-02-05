@@ -36,14 +36,14 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   .swiper {
     width: 100%;
     padding-bottom: 50px;
+    
   }
   
   .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 300px;
-    /* height: 300px; */
-    /* margin: 20px; */
+    width: 80%; 
+    max-width: 300px;
   }
   
   .swiper-slide img {
@@ -66,7 +66,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
              <style>{css}</style>
             <div className="w-full">
               <Swiper
-                spaceBetween={50}
+                
                 autoplay={{
                   delay: autoplayDelay,
                   disableOnInteraction: false,
@@ -75,13 +75,17 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 grabCursor={true}
                 centeredSlides={true}
                 loop={true}
-                slidesPerView={"auto"}
-                coverflowEffect={{
-                  rotate: 0,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2.5,
-                }}
+                spaceBetween={20} 
+  // 2. Ensure centeredSlides is true (you already have this)
+  
+  // 3. Set slidesPerView to 'auto' (you already have this)
+  slidesPerView={"auto"}
+  coverflowEffect={{
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2, // Slightly reduced for better mobile framing
+  }}
                 pagination={showPagination}
                 navigation={
                   showNavigation
